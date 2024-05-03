@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Station Table</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Station ID</th>
+                    <th>Name</th>
+                    <th>Line</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Width Neighbour 1</th>
+                    <th>Longitude Neighbour 1</th>
+                    <th>Width Neighbour 2</th>
+                    <th>Longitude Neighbour 2</th>
+                    <th>Is Favourite</th>
+                    <th>Alarm</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for station in stations %}
+                <tr>
+                    <td>{{ station.station_id }}</td>
+                    <td><input type="text" name="name" value="{{ station.name }}"></td>
+                    <td><input type="text" name="line" value="{{ station.line }}"></td>
+                    <td><input type="text" name="latitude" value="{{ station.latitude }}"></td>
+                    <td><input type="text" name="longitude" value="{{ station.longitude }}"></td>
+                    <td><input type="text" name="width_neighbour1" value="{{ station.width_neighbour1 }}"></td>
+                    <td><input type="text" name="longitude_neighbour1" value="{{ station.longitude_neighbour1 }}"></td>
+                    <td><input type="text" name="width_neighbour2" value="{{ station.width_neighbour2 }}"></td>
+                    <td><input type="text" name="longitude_neighbour2" value="{{ station.longitude_neighbour2 }}"></td>
+                    <td><input type="checkbox" name="is_favourite" {% if station.is_favourite %}checked{% endif %}></td>
+                    <td><input type="text" name="alarm" value="{{ station.alarm }}"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Apply</button>
+    </form>
+</body>
+</html>

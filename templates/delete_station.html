@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Station</title>
+</head>
+<body>
+    <h2>Delete Station</h2>
+    <form action="{% url 'delete_station' %}" method="post">
+        {% csrf_token %}
+        <label for="station_id">Station ID:</label><br>
+        <input type="number" id="station_id" name="station_id" required><br><br>
+        <input type="submit" value="Delete Station">
+    </form>
+</body>
+</html>

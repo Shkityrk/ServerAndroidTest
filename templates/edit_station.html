@@ -1,0 +1,22 @@
+<!-- edit_station.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Station</title>
+</head>
+<body>
+    <h2>Edit Station</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                <!-- Показываем текущее значение рядом с полем -->
+                <span>{{ field.value }}</span>
+            </div>
+        {% endfor %}
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Station to Delete</title>
+</head>
+<body>
+    <h2>Choose Station to Delete</h2>
+    <form action="{% url 'confirm_delete_station' %}" method="post">
+        {% csrf_token %}
+        <select name="station_to_delete">
+            {% for station in stations %}
+                <option value="{{ station.id }}">{{ station.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Delete Station">
+    </form>
+</body>
+</html>
